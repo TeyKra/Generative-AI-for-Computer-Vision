@@ -116,8 +116,8 @@ Imagine trying to summarize a book:
 ### Question 1:
 
 ### 1. Conceptual Discussion:
-    - Explain how the VAE decoder can be used as a GAN generator.
-    - Discuss the differences between the VAE encoder and the GAN discriminator.
+   - Explain how the VAE decoder can be used as a GAN generator.
+   - Discuss the differences between the VAE encoder and the GAN discriminator.
 
 ### Answer:
 
