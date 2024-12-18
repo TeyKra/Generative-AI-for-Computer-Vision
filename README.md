@@ -38,16 +38,14 @@ In a conceptual sense:
 ## Answer:
 We use the **reparameterization trick** in Variational Autoencoders (VAEs) to allow backpropagation through the stochastic sampling process. 
 
-VAEs involve sampling a latent variable $z$ from a distribution (e.g., Gaussian) defined by parameters $\mu$ (mean) and $\sigma$ (variance), which are outputs of the encoder network. Without the trick, the sampling step is non-differentiable, and gradients cannot propagate back to the encoder.
+VAEs involve sampling a latent variable \( z \) from a distribution (e.g., Gaussian) defined by parameters \( \mu \) (mean) and \( \sigma \) (variance), which are outputs of the encoder network. Without the trick, the sampling step is non-differentiable, and gradients cannot propagate back to the encoder.
 
-## Reparameterization Trick:
-Instead of sampling $z$ directly as $z \sim \mathcal{N}(\mu, \sigma^2)$, we rewrite $z$ as:
-
+### Reparameterization Trick:
+Instead of sampling \( z \) directly as \( z \sim \mathcal{N}(\mu, \sigma^2) \), we rewrite \( z \) as:
 \[
-    z = \mu + \sigma \cdot \epsilon
+z = \mu + \sigma \cdot \epsilon
 \]
-
-where $\epsilon \sim \mathcal{N}(0, 1)$ is a noise term sampled from a standard normal distribution. This reformulation separates the stochastic part ($\epsilon$) from the deterministic parameters ($\mu$, $\sigma$), making the process differentiable.
+where \( \epsilon \sim \mathcal{N}(0, 1) \) is a noise term sampled from a standard normal distribution. This reformulation separates the stochastic part (\( \epsilon \)) from the deterministic parameters (\( \mu, \sigma \)), making the process differentiable.
 
 ### Benefits:
 - Enables gradient-based optimization (e.g., using backpropagation).
@@ -57,51 +55,49 @@ In short, the reparameterization trick bridges the gap between stochastic sampli
 
 ## Questions 2:
 ### 2. How does the KL divergence loss affect the latent space?
-
 ### Answer:
-The **KL divergence loss** in Variational Autoencoders (VAEs) encourages the latent space to closely match a predefined prior distribution, typically a standard Gaussian distribution ($\mathcal{N}(0, I)$). Here's how it affects the latent space:
+The **KL divergence loss** in Variational Autoencoders (VAEs) encourages the latent space to closely match a predefined prior distribution, typically a standard Gaussian distribution (\( \mathcal{N}(0, I) \)). Here's how it affects the latent space:
 
 ### 1. **Regularizes the Latent Space:**
-- The KL divergence term measures the difference between the encoder's learned latent distribution $q(z|x)$ and the prior $p(z)$.
-- Minimizing this term pushes $q(z|x)$ to be as close as possible to $p(z)$, ensuring a structured and smooth latent space.
+   - The KL divergence term measures the difference between the encoder's learned latent distribution \( q(z|x) \) and the prior \( p(z) \).
+   - Minimizing this term pushes \( q(z|x) \) to be as close as possible to \( p(z) \), ensuring a structured and smooth latent space.
 
 ### 2. **Promotes Generalization:**
-- By regularizing the latent space, the KL divergence prevents overfitting. This allows the VAE to generate meaningful samples even for points not explicitly seen during training.
+   - By regularizing the latent space, the KL divergence prevents overfitting. This allows the VAE to generate meaningful samples even for points not explicitly seen during training.
 
 ### 3. **Controls Latent Space Overlap:**
-- Ensures that the latent space for different inputs overlaps sufficiently. This overlap helps the decoder generalize and produce coherent reconstructions and generations.
+   - Ensures that the latent space for different inputs overlaps sufficiently. This overlap helps the decoder generalize and produce coherent reconstructions and generations.
 
 ### Trade-off:
-- Too much weight on the KL divergence loss can lead to underfitting, where the encoder ignores the data ($q(z|x) \approx p(z)$).
+- Too much weight on the KL divergence loss can lead to underfitting, where the encoder ignores the data (\( q(z|x) \approx p(z) \)).
 - A proper balance (via the ELBO loss) maintains reconstruction quality while keeping a well-regularized latent space.
 
 In summary, the KL divergence loss shapes the latent space into a smooth, organized structure that aligns with the prior, promoting meaningful interpolation and generalization.
 
 ## Questions 3:
 ### 3. How does changing the latent space dimension (latent_dim) impact the reconstruction quality?
-
 ### Answer:
-Changing the **latent space dimension** ($\text{latent\_dim}$) in a Variational Autoencoder (VAE) directly impacts the **reconstruction quality** as follows:
+Changing the **latent space dimension** (\( \text{latent\_dim} \)) in a Variational Autoencoder (VAE) directly impacts the **reconstruction quality** as follows:
 
 ### 1. **Low Latent Dimension:**
-- **Impact:** If $\text{latent\_dim}$ is too small, the model may not have enough capacity to encode all the important features of the input data.
-- **Result:** Poor reconstruction quality, as the latent space is too constrained to capture the full variability of the data.
-- **Use Case:** Useful for discovering low-dimensional representations when the data is inherently simple or highly structured.
+   - **Impact:** If \( \text{latent\_dim} \) is too small, the model may not have enough capacity to encode all the important features of the input data.
+   - **Result:** Poor reconstruction quality, as the latent space is too constrained to capture the full variability of the data.
+   - **Use Case:** Useful for discovering low-dimensional representations when the data is inherently simple or highly structured.
 
 ### 2. **High Latent Dimension:**
-- **Impact:** If $\text{latent\_dim}$ is too large, the model has excessive capacity, leading to less regularized latent representations.
-- **Result:** The VAE might overfit to the training data, potentially leading to good reconstruction but poorer generative performance, as the latent space may deviate from the prior distribution.
-- **Use Case:** Suitable for complex datasets with high variability but risks losing the meaningful structure of the latent space.
+   - **Impact:** If \( \text{latent\_dim} \) is too large, the model has excessive capacity, leading to less regularized latent representations.
+   - **Result:** The VAE might overfit to the training data, potentially leading to good reconstruction but poorer generative performance, as the latent space may deviate from the prior distribution.
+   - **Use Case:** Suitable for complex datasets with high variability but risks losing the meaningful structure of the latent space.
 
 ### 3. **Optimal Latent Dimension:**
-- Balancing $\text{latent\_dim}$ is critical. An appropriately sized latent space allows the model to:
-  - Capture essential data features for accurate reconstruction.
-  - Maintain a structured and regularized latent space for generalization.
+   - Balancing \( \text{latent\_dim} \) is critical. An appropriately sized latent space allows the model to:
+     - Capture essential data features for accurate reconstruction.
+     - Maintain a structured and regularized latent space for generalization.
 
 ### Summary:
-- **Small $\text{latent\_dim}$:** Poor reconstruction, good generalization (if over-restricted).
-- **Large $\text{latent\_dim}$:** Good reconstruction, risk of poor generalization.
-- **Choosing $\text{latent\_dim}$:** Depends on the complexity of the dataset and the task (e.g., reconstruction vs. generation).
+- **Small \( \text{latent\_dim} \):** Poor reconstruction, good generalization (if over-restricted).
+- **Large \( \text{latent\_dim} \):** Good reconstruction, risk of poor generalization.
+- **Choosing \( \text{latent\_dim} \):** Depends on the complexity of the dataset and the task (e.g., reconstruction vs. generation).
 
 ## Part 2: From VAE to GAN
 
