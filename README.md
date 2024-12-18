@@ -186,18 +186,18 @@ The VAE encoder and the GAN discriminator have fundamentally different purposes 
 ## Results and Choices
 
 ### VAE Configuration Options
-![Configuration Options VAE](images\config_vae.png)
+![config_vae](https://github.com/user-attachments/assets/6ff0cf36-1e7e-438e-8eda-619aeea8a24a)
 
 ### VAE Training Results
-![Loss](images\Loss.png)
+![Loss](https://github.com/user-attachments/assets/42b4bcdc-5a90-4488-8a52-741cd141ae83)
 
-![Latent Space](images\Latent_space.png)
+![Latent_space](https://github.com/user-attachments/assets/e095b840-04c6-4629-b91c-dc08674cc8be)
 
-![Images VAE](images\images.png)
+![images](https://github.com/user-attachments/assets/46cf0b1e-ea95-4425-a31c-4aced101b466)
 
 ### GAN Result (without training)
-![Configuration Options GAN](images\config_gan.png)
+![config_gan](https://github.com/user-attachments/assets/1e2aa5de-b71f-4b62-ac50-7f5f85a591b9)
 
-![Images GAN](images\gan_images.png)
+![gan_images](https://github.com/user-attachments/assets/c4a1e292-9a73-46fa-8c43-e60d3f6fd0f2)
 
 *This code is not perfect and has room for improvement and adaptation. Feel free to adapt it to your needs and explore the fascinating world of GEN AI.*
