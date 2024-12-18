@@ -34,8 +34,10 @@ In a conceptual sense:
 ## Part 1: Implementing a Variational Autoencoder (VAE)
 
 ## Questions 1:
+
 1. Why do we use the reparameterization trick in VAEs?
-## Answer:
+
+### Answer:
 We use the **reparameterization trick** in Variational Autoencoders (VAEs) to allow backpropagation through the stochastic sampling process. 
 
 VAEs involve sampling a latent variable \( z \) from a distribution (e.g., Gaussian) defined by parameters \( \mu \) (mean) and \( \sigma \) (variance), which are outputs of the encoder network. Without the trick, the sampling step is non-differentiable, and gradients cannot propagate back to the encoder.
@@ -53,8 +55,12 @@ where \( \epsilon \sim \mathcal{N}(0, 1) \) is a noise term sampled from a stand
 
 In short, the reparameterization trick bridges the gap between stochastic sampling and deterministic optimization, ensuring the VAE is trainable.
 
+---
+
 ## Questions 2:
+
 ### 2. How does the KL divergence loss affect the latent space?
+
 ### Answer:
 The **KL divergence loss** in Variational Autoencoders (VAEs) encourages the latent space to closely match a predefined prior distribution, typically a standard Gaussian distribution (\( \mathcal{N}(0, I) \)). Here's how it affects the latent space:
 
@@ -74,8 +80,12 @@ The **KL divergence loss** in Variational Autoencoders (VAEs) encourages the lat
 
 In summary, the KL divergence loss shapes the latent space into a smooth, organized structure that aligns with the prior, promoting meaningful interpolation and generalization.
 
+---
+
 ## Questions 3:
-### 3. How does changing the latent space dimension (latent_dim) impact the reconstruction quality?
+
+### 3. How does changing the latent space dimension (latent\_dim) impact the reconstruction quality?
+
 ### Answer:
 Changing the **latent space dimension** (\( \text{latent\_dim} \)) in a Variational Autoencoder (VAE) directly impacts the **reconstruction quality** as follows:
 
@@ -99,9 +109,12 @@ Changing the **latent space dimension** (\( \text{latent\_dim} \)) in a Variatio
 - **Large \( \text{latent\_dim} \):** Good reconstruction, risk of poor generalization.
 - **Choosing \( \text{latent\_dim} \):** Depends on the complexity of the dataset and the task (e.g., reconstruction vs. generation).
 
+---
+
 ## Part 2: From VAE to GAN
 
 ### Question 1:
+
 1. Conceptual Discussion:
     - Explain how the VAE decoder can be used as a GAN generator.
     - Discuss the differences between the VAE encoder and the GAN discriminator.
@@ -113,15 +126,15 @@ Changing the **latent space dimension** (\( \text{latent\_dim} \)) in a Variatio
 The **VAE decoder** can function as a **GAN generator** because both share the same goal: generating samples from a learned data distribution. Here's how this works conceptually:
 
 - **VAE Decoder:**
-  - The decoder takes a latent vector $z$ sampled from a prior distribution (e.g., $\mathcal{N}(0, 1)$) and maps it to the data space $x$.
+  - The decoder takes a latent vector \( z \) sampled from a prior distribution (e.g., \( \mathcal{N}(0, 1) \)) and maps it to the data space \( x \).
   - Its training is focused on reconstructing data while regularizing the latent space to match the prior distribution.
 
 - **GAN Generator:**
-  - The generator in a GAN also takes a random latent vector $z$ (sampled from a prior distribution, typically $\mathcal{N}(0, 1)$) and maps it to the data space $x$.
+  - The generator in a GAN also takes a random latent vector \( z \) (sampled from a prior distribution, typically \( \mathcal{N}(0, 1) \)) and maps it to the data space \( x \).
   - Its training focuses on "fooling" the discriminator into classifying the generated samples as real.
 
 **Why the VAE Decoder Fits:**
-- After training a VAE, the decoder is effectively a learned mapping from $z$ to realistic data $x$, much like a GAN generator. It can be directly used to generate new samples by sampling $z$ from the prior distribution.
+- After training a VAE, the decoder is effectively a learned mapping from \( z \) to realistic data \( x \), much like a GAN generator. It can be directly used to generate new samples by sampling \( z \) from the prior distribution.
 
 **Key Difference:**
 - The VAE decoder's outputs are typically optimized for reconstruction quality and latent space organization, while a GAN generator prioritizes producing samples indistinguishable from real data according to the discriminator.
@@ -138,7 +151,6 @@ The **VAE decoder** can function as a **GAN generator** because both share the s
 | **Focus**               | Capturing essential features of the data for reconstruction. | Detecting realistic patterns in data for adversarial training. |
 | **Type of Learning**    | Probabilistic (latent distribution modeling). | Discriminative (binary classification). |
 | **Interaction with \( z \)** | Learns to model the relationship between the input data and a compact, meaningful representation in a latent space. | Does not involve or manipulate any latent representation; its focus is on distinguishing real from fake samples. |
-
 
 ---
 
