@@ -1,0 +1,25 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore virtual environment
+.venv/
+venv/
+
+# Ignore logs folder
+logs/
+
+# Ignore Streamlit logs or cache
+.streamlit/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled Python files
+*.so
+*.pyd
+
+# Ignore environment configuration
+.env

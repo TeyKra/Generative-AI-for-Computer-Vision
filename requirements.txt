@@ -1,0 +1,5 @@
+tensorflow
+streamlit
+matplotlib
+mpl_toolkits
+numpy
