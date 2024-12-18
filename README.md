@@ -7,23 +7,29 @@ In this lab, you will:
 3. Compare the roles of VAEs and GANs in generative modeling.
 4. Reflect on the strengths and weaknesses of each approach.
 
+## How to use
+- Download the present repository
+- build the venv by double-clicking the built.bat file
+- launch the streamlit UI by double-clicking the launch.bat file
+- remember to train before generating
+
 ## Background
 ### Variational Autoencoders (VAEs)
 A VAE is a generative model that reconstructs input data by encoding it into a latent space and
 then decoding it back. The latent space is a compressed representation that captures the most important features of the input.
 **The key elements of a VAE:**:
-    - Encoder: Compresses input data into a latent distribution (mean and variance).
-    - Latent Space: The encoded representation space.
-    - Reparameterization Trick: Allows gradients to flow through the stochastic latent space.
-    - Decoder: Reconstructs the input from the latent space.
+- Encoder: Compresses input data into a latent distribution (mean and variance).
+- Latent Space: The encoded representation space.
+- Reparameterization Trick: Allows gradients to flow through the stochastic latent space.
+- Decoder: Reconstructs the input from the latent space.
 **Generative Adversarial Networks (GANs)**
 A GAN is a generative model consisting of two components:
-    - Generator: Produces fake data from random noise (latent space).
-    - Discriminator: Distinguishes between real and fake data. GANs are trained using an adversarial process where the generator tries to fool the discriminator, and the discriminator tries to detect fake data.
+- Generator: Produces fake data from random noise (latent space).
+- Discriminator: Distinguishes between real and fake data. GANs are trained using an adversarial process where the generator tries to fool the discriminator, and the discriminator tries to detect fake data.
 **Reversing VAEs into GANs**
 In a conceptual sense:
-    - A VAE decoder can be seen as a GAN generator.
-    - The GAN discriminator replaces the VAE encoder by determining the quality of generated samples instead of encoding input data.
+- A VAE decoder can be seen as a GAN generator.
+- The GAN discriminator replaces the VAE encoder by determining the quality of generated samples instead of encoding input data.
 
 ## Part 1: Implementing a Variational Autoencoder (VAE)
 
