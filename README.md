@@ -183,4 +183,21 @@ The VAE encoder and the GAN discriminator have fundamentally different purposes 
    - The encoder compresses data into meaningful latent representations to assist reconstruction.  
    - The discriminator distinguishes real from fake, competing against the generator to improve the quality of generated data.
 
+## Results and Choices
 
+### VAE Configuration Options
+![Configuration Options VAE](images\config_vae.png)
+
+### VAE Training Results
+![Loss](images\Loss.png)
+
+![Latent Space](images\Latent_space.png)
+
+![Images VAE](images\images.png)
+
+### GAN Result (without training)
+![Configuration Options GAN](images\config_gan.png)
+
+![Images GAN](images\gan_images.png)
+
+*This code is not perfect and has room for improvement and adaptation. Feel free to adapt it to your needs and explore the fascinating world of GEN AI.*

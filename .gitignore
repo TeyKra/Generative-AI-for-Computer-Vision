@@ -23,3 +23,6 @@ Thumbs.db
 
 # Ignore environment configuration
 .env
+
+# Ignore images folder for Markdown
+images/
