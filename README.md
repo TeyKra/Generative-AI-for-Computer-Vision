@@ -136,7 +136,7 @@ Implement a basic self-attention mechanism in TensorFlow and apply it to a short
 ---
 
 ### Visualization with Heatmap
-![Heatmap of Attention Scores](images\First%20Head.png)
+![Heatmap of Attention Scores](images/First%20Head.png)
 
 The generated heatmap represents the attention scores for the first sample and the first attention head in the self-attention mechanism. Each cell in the matrix indicates the degree of attention a word (query position) pays to another word (key position) in the input sequence.
 
@@ -152,40 +152,40 @@ In this heatmap, the values typically range between approximately 0.07 and 0.12,
 
 You can test various configurations to observe their impact on the attention weight distribution:
 
-![Heatmap of Attention Scores](images\embed32-heads2.png)
+![Heatmap of Attention Scores](images/embed32-heads2.png)
 1. **Heatmap 1 (embed_dim=32, num_heads=2):**
    - The distribution is relatively homogeneous with a few peaks reaching around 0.14.
    - Certain key positions (e.g., column 8) capture more attention.
 
-![Heatmap of Attention Scores](images\embed32-heads4.png)
+![Heatmap of Attention Scores](images/embed32-heads4.png)
 2. **Heatmap 2 (embed_dim=32, num_heads=4):**
    - The distribution remains balanced with maximum values around 0.13, indicating better modulation of attention weights.
 
-![Heatmap of Attention Scores](images\embed32-heads8.png)
+![Heatmap of Attention Scores](images/embed32-heads8.png)
 3. **Heatmap 3 (embed_dim=32, num_heads=8):**
    - The attention distribution becomes even more uniform, with slightly reduced maximum values (approximately 0.13).
 
-![Heatmap of Attention Scores](images\embed64-heads2.png)
+![Heatmap of Attention Scores](images/embed64-heads2.png)
 4. **Heatmap 4 (embed_dim=64, num_heads=2):**
    - There is a more pronounced focus on specific positions, with scores exceeding 0.14, accentuating certain word relationships.
 
-![Heatmap of Attention Scores](images\embed64-heads4.png)
+![Heatmap of Attention Scores](images/embed64-heads4.png)
 5. **Heatmap 5 (embed_dim=64, num_heads=4):**
    - The distribution is more refined with a notable peak at about 0.15, improving the precision of contextual relationships.
 
-![Heatmap of Attention Scores](images\embed64-heads8.png)
+![Heatmap of Attention Scores](images/embed64-heads8.png)
 6. **Heatmap 6 (embed_dim=64, num_heads=8):**
    - The values are more balanced with maximum scores around 0.13, suggesting a good distribution of attention.
 
-![Heatmap of Attention Scores](images\embed128-heads2.png)
+![Heatmap of Attention Scores](images/embed128-heads2.png)
 7. **Heatmap 7 (embed_dim=128, num_heads=2):**
    - Increasing the embedding dimension to 128 with only 2 heads results in a more marked focus on specific positions (around 0.15), better capturing global dependencies.
 
-![Heatmap of Attention Scores](images\embed128-heads4.png)
+![Heatmap of Attention Scores](images/embed128-heads4.png)
 8. **Heatmap 8 (embed_dim=128, num_heads=4):**
    - A good balance is achieved between focus and dispersion, with high values reaching around 0.17 at certain positions.
 
-![Heatmap of Attention Scores](images\embed128-heads8.png)
+![Heatmap of Attention Scores](images/embed128-heads8.png)
 9. **Heatmap 9 (embed_dim=128, num_heads=8):**
    - The attention is uniformly distributed with a few focal points (around 0.13), demonstrating the model's flexibility in capturing complex relationships.
 
