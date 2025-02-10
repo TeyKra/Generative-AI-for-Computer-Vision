@@ -37,8 +37,14 @@ In this lab, you will:
    - Train the GAN on the MNIST dataset.
    - Generate images from the latent noise vector.
 
-#### Result on each epochs
-![CNN-based GAN](gif/CNN-based_GAN.gif)
+#### Generator and Discriminator Loss During Training
+![CNN-Based GAN](images/CNN-Based%20GAN%20Loss.png)
+
+We first observe significant fluctuations in the Generator’s loss (blue curve) as well as the Discriminator’s loss (orange curve). Over the course of the iterations, the Discriminator’s loss tends to decrease and then generally stabilizes at lower values, while the Generator’s loss remains higher and shows occasional spikes. These oscillations are normal in GAN training, because the Generator is constantly trying to fool the Discriminator, which adapts in response. The graph indicates that neither model completely dominates the other, suggesting a kind of equilibrium in their confrontation and a gradual learning process.
+
+#### GIF showing the Generator's progress over epochs
+![CNN-based GAN](gif/CNN-based%20GAN.gif)
+
 
 ---
 
@@ -76,8 +82,16 @@ In this lab, you will:
    - Train the Transformer-based GAN on the MNIST dataset.
    - Compare its performance with the CNN-based GAN.
 
-#### Result on each epochs
-![Transformer-based GAN](gif\Transformer-based GAN.gif)
+#### Generator and Discriminator Loss During Training
+![Transformer-based GAN](images/Transformer-based%20GAN.png)
+
+Initially, the Generator’s loss increases sharply, indicating that it struggles to produce realistic images, while the Discriminator’s loss decreases rapidly, showing that it effectively distinguishes real images from fake ones. After this unstable phase, a relative equilibrium sets in, with typical GAN oscillations. The Generator’s loss remains generally higher, suggesting that it still has difficulty deceiving the Discriminator, but the trend indicates a gradual stabilization of the learning process.
+
+At the beginning, both loss curves (G and D) fluctuate significantly, signaling that the Discriminator and Generator are adjusting to each other. Gradually, the Discriminator’s loss (D) decreases and stabilizes further, indicating that it is becoming more efficient at detecting fake samples. 
+Meanwhile, the Generator’s loss (G) oscillates at relatively higher values, showing that it must continuously improve its samples to deceive an increasingly effective Discriminator. These oscillations demonstrate that both models push each other to improve continuously.
+
+#### GIF showing the Generator's progress over epochs
+![Transformer-based GAN](gif/Transformer-based%20GAN.gif)
 
 ---
 
@@ -87,8 +101,20 @@ In this lab, you will:
 - **Objective:** Implement a complete GAN model using both components with adversarial training to improve both the generator and the discriminator.
 - **Hint:** Take inspiration from the solution provided for the CNN-based GAN.
 
-#### Result on each epochs
-![GAN Model and Training](gif\GAN Model and Training.gif)
+#### Generator and Discriminator Loss During Training
+![GAN Model and Training](images/GAN%20Model%20and%20Training.png)
+
+At the beginning, the Generator’s loss increases sharply, indicating that it struggles to produce convincing images. Meanwhile, the Discriminator’s loss decreases, showing that it easily detects generated images as fake.
+
+After this initial phase, the Generator’s loss stabilizes and oscillates, while the Discriminator’s loss remains relatively low but fluctuates. This suggests that the GAN is reaching an equilibrium where the Generator gradually improves to deceive the Discriminator, while the latter adjusts its ability to distinguish real from fake images.
+Towards the end of training, the losses remain within relatively stable ranges, indicating that both networks continue to refine themselves, though the oscillations reflect an ongoing competitive dynamic.
+
+#### GIF showing the Generator's progress over epochs
+![GAN Model and Training](gif/GAN%20Model%20and%20Training.gif)
+
+---
+### Conclusion Part 1,2,3
+Overall, the three approaches successfully generate realistic handwritten digits on MNIST, but each has its own characteristics. The first method, based on CNNs (with transposed convolutions for the Generator and standard convolutions for the Discriminator), offers a relatively simple architecture to train and quickly produces high-quality images. The second method, which replaces CNNs with Transformers in both the Generator and the Discriminator, focuses more on global relationships (via multi-head attention); however, it can be more unstable during training, even though it ultimately manages to generate credible samples. The third method, which also employs a Transformer-based Generator–Discriminator pair, closely resembles the second in its implementation and yields visually comparable results while reaffirming the potential of Transformers for image generation. On this relatively simple dataset, the differences in quality between the generated images remain modest, but the Transformer approach demonstrates its ability to capture a global view of the image and offers promising prospects for extending to more complex tasks.
 
 ---
 
@@ -110,6 +136,7 @@ Implement a basic self-attention mechanism in TensorFlow and apply it to a short
 ---
 
 ### Visualization with Heatmap
+![Heatmap of Attention Scores](images\First%20Head.png)
 
 The generated heatmap represents the attention scores for the first sample and the first attention head in the self-attention mechanism. Each cell in the matrix indicates the degree of attention a word (query position) pays to another word (key position) in the input sequence.
 
@@ -125,31 +152,40 @@ In this heatmap, the values typically range between approximately 0.07 and 0.12,
 
 You can test various configurations to observe their impact on the attention weight distribution:
 
+![Heatmap of Attention Scores](images\embed32-heads2.png)
 1. **Heatmap 1 (embed_dim=32, num_heads=2):**
    - The distribution is relatively homogeneous with a few peaks reaching around 0.14.
    - Certain key positions (e.g., column 8) capture more attention.
 
+![Heatmap of Attention Scores](images\embed32-heads4.png)
 2. **Heatmap 2 (embed_dim=32, num_heads=4):**
    - The distribution remains balanced with maximum values around 0.13, indicating better modulation of attention weights.
 
+![Heatmap of Attention Scores](images\embed32-heads8.png)
 3. **Heatmap 3 (embed_dim=32, num_heads=8):**
    - The attention distribution becomes even more uniform, with slightly reduced maximum values (approximately 0.13).
 
+![Heatmap of Attention Scores](images\embed64-heads2.png)
 4. **Heatmap 4 (embed_dim=64, num_heads=2):**
    - There is a more pronounced focus on specific positions, with scores exceeding 0.14, accentuating certain word relationships.
 
+![Heatmap of Attention Scores](images\embed64-heads4.png)
 5. **Heatmap 5 (embed_dim=64, num_heads=4):**
    - The distribution is more refined with a notable peak at about 0.15, improving the precision of contextual relationships.
 
+![Heatmap of Attention Scores](images\embed64-heads8.png)
 6. **Heatmap 6 (embed_dim=64, num_heads=8):**
    - The values are more balanced with maximum scores around 0.13, suggesting a good distribution of attention.
 
+![Heatmap of Attention Scores](images\embed128-heads2.png)
 7. **Heatmap 7 (embed_dim=128, num_heads=2):**
    - Increasing the embedding dimension to 128 with only 2 heads results in a more marked focus on specific positions (around 0.15), better capturing global dependencies.
 
+![Heatmap of Attention Scores](images\embed128-heads4.png)
 8. **Heatmap 8 (embed_dim=128, num_heads=4):**
    - A good balance is achieved between focus and dispersion, with high values reaching around 0.17 at certain positions.
 
+![Heatmap of Attention Scores](images\embed128-heads8.png)
 9. **Heatmap 9 (embed_dim=128, num_heads=8):**
    - The attention is uniformly distributed with a few focal points (around 0.13), demonstrating the model's flexibility in capturing complex relationships.
 
