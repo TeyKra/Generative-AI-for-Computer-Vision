@@ -53,12 +53,29 @@ Dividing by $\sqrt{d_k}$ stabilizes the gradients by preventing overly large dot
 
 Assume a sequence of 3 tokens $\{t_1, t_2, t_3\}$. After converting into embeddings, you obtain vectors of dimension $d_{model}$. Each embedding is then projected to obtain $Q$, $K$, and $V$ (for example with $d_k = 2$):
 
-$Q = \begin{bmatrix} q_{11} & q_{12} \\ q_{21} & q_{22} \\ q_{31} & q_{32} \end{bmatrix}$
+$$
+Q = \begin{bmatrix}
+q_{11} & q_{12} \\
+q_{21} & q_{22} \\
+q_{31} & q_{32}
+\end{bmatrix}
+$$
 
-$K = \begin{bmatrix} k_{11} & k_{12} \\ k_{21} & k_{22} \\ k_{31} & k_{32} \end{bmatrix}$
+$$
+K = \begin{bmatrix}
+k_{11} & k_{12} \\
+k_{21} & k_{22} \\
+k_{31} & k_{32}
+\end{bmatrix}
+$$
 
-$V = \begin{bmatrix} v_{11} & v_{12} \\ v_{21} & v_{22} \\ v_{31} & v_{32} \end{bmatrix}$
-
+$$
+V = \begin{bmatrix}
+v_{11} & v_{12} \\
+v_{21} & v_{22} \\
+v_{31} & v_{32}
+\end{bmatrix}
+$$
 
 The product $QK^\top$ results in a $3 \times 3$ matrix. After normalization by $\sqrt{d_k}= \sqrt{2}$ and applying a row-wise softmax, you obtain the attention weights used to combine $V$ linearly.
 
