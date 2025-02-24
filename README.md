@@ -101,7 +101,14 @@ The matrices $W_i^Q, W_i^K, W_i^V$ are specific to each head, and $W^O$ performs
 
 #### 3.3 Example
 
-With 8 heads, each head operates in a space of dimension 64. For instance, one head may learn to capture subject-verb dependencies while another focuses on punctuation or rare words. Each head outputs a matrix of size $n \times d_v$. After concatenation (resulting in a size $n \times (h \cdot d_v)$), a matrix $W^O$ (of size $(h \cdot d_v) \times d_{model}$) is used to map back to the $d_{model}$ dimension.
+With 8 heads, each head operates in a space of dimension 64. 
+For instance, one head may learn to capture subject-verb dependencies 
+while another focuses on punctuation or rare words. 
+Each head outputs a matrix of size `n × d_v`. 
+After concatenation (resulting in a size `n × (h × d_v)`), 
+a matrix `W^O` (of size `(h × d_v) × d_model`) 
+is used to map back to the `d_model` dimension.
+
 
 ---
 
