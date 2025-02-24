@@ -195,11 +195,11 @@ These projections transform the initial embedding (token or image patch) into a 
 
 In a 2D convolution, for a patch $\mathcal{P}_{i,j}$ around position $(i, j)$, the weighted sum is:
 
-$$
+```math
 \mathrm{Convolution}(\mathcal{P}_{i,j})
 = \sum_{(k,l)\in \mathcal{P}_{i,j}}
 a_{i,j,(k,l)} \, V(k,l).
-$$
+```
 
 - $\mathcal{P}_{i,j}$ represents the pixels in the neighborhood around $(i, j)$.
 - The coefficients $a_{i,j,(k,l)}$ come from the convolution kernel.
