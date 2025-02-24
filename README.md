@@ -1,7 +1,3 @@
----
-mathjax: true
----
-
 # Lab: Exploring Transformers for Natural Language Processing and Vision Tasks
 
 ---
