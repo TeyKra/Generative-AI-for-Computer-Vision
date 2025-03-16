@@ -1,4 +1,4 @@
-# Lab: Exploring Transformers for Natural Language Processing and Vision Tasks
+# Lab3: Exploring Transformers for Natural Language Processing and Vision Tasks
 
 ---
 
