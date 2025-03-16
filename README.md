@@ -21,7 +21,7 @@ In this lab, you will explore advanced generative modeling by integrating attent
   2. **Apply the self-attention module** to a small sequence of words to observe how attention enhances feature representation.
   3. **Analyze the impact** of self-attention on model performance and interpretability in sequence modeling tasks.
 
-### `lab3`: Exploring Transformers for Natural Language Processing and Vision Tasks
+### `lab3`: Transformers NLP VisionTasks
 In this lab, you will dive deeper into the core architecture of the Transformer model and then explore its applications in both natural language processing and computer vision tasks.
 
 1. **Understand the core architecture** of the Transformer model, including the attention mechanism, positional encoding, and encoder-decoder structure.
@@ -29,7 +29,7 @@ In this lab, you will dive deeper into the core architecture of the Transformer 
 3. **Apply a Vision Transformer (ViT) for image classification**, understanding how Transformer concepts transfer to visual data.
 4. **Reflect on the differences** between Transformer architectures in text and vision applications, discussing potential benefits and challenges in each domain.
 
-### `lab4`: Introduction to Stable Diffusion Models
+### `lab4`: Stable Diffusion Models
 In this lab, you will explore how neural networks can be used to approximate the inverse of a function, delve into the fundamental principles of diffusion models, and implement a basic diffusion model for image generation.
 
 1. **Understand how neural networks** can approximate the inverse of a function and analyze the implications of this capability.
